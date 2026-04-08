@@ -80,7 +80,7 @@ public class VentanPerder extends javax.swing.JFrame {
     private void vIntentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vIntentarActionPerformed
          
         this.dispose();
-        gameUI Ventana = new gameUI();
+        modoNormal Ventana = new modoNormal();
         Ventana.setVisible(true);
         
     }//GEN-LAST:event_vIntentarActionPerformed

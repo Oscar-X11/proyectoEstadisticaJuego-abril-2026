@@ -78,7 +78,7 @@ public class VentanaGanar extends javax.swing.JFrame {
 
     private void btnVjugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVjugarActionPerformed
        this.dispose();
-        gameUI Ventana = new gameUI();
+        modoNormal Ventana = new modoNormal();
         Ventana.setVisible(true);
     }//GEN-LAST:event_btnVjugarActionPerformed
 
