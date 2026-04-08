@@ -32,6 +32,7 @@ public class VentanaGanar extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         numIntentos = new javax.swing.JLabel();
+        btnRegresarMenu = new javax.swing.JButton();
         btnVjugar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -47,6 +48,14 @@ public class VentanaGanar extends javax.swing.JFrame {
         numIntentos.setForeground(new java.awt.Color(255, 255, 255));
         numIntentos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(numIntentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 170, 50));
+
+        btnRegresarMenu.setText("Volver al Menu");
+        btnRegresarMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarMenuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRegresarMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
         btnVjugar.setText("Volver a jugar");
         btnVjugar.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +73,7 @@ public class VentanaGanar extends javax.swing.JFrame {
         });
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/1.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/ganaste.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -82,12 +91,19 @@ public class VentanaGanar extends javax.swing.JFrame {
         Ventana.setVisible(true);
     }//GEN-LAST:event_btnVjugarActionPerformed
 
+    private void btnRegresarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarMenuActionPerformed
+          this.dispose();
+        gameUI Ventana = new gameUI();
+        Ventana.setVisible(true);
+    }//GEN-LAST:event_btnRegresarMenuActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegresarMenu;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnVjugar;
     private javax.swing.JLabel jLabel1;
