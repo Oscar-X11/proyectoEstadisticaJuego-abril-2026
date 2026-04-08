@@ -98,7 +98,6 @@ public class modoNormal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         JLtitulo = new javax.swing.JLabel();
         jpMain = new javax.swing.JPanel();
         GridNumeros = new javax.swing.JPanel();
@@ -143,9 +142,6 @@ public class modoNormal extends javax.swing.JFrame {
         JLtitulo1 = new javax.swing.JLabel();
         JLtitulo2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/ADIVINA EL NUMERO.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
 
         JLtitulo.setFont(new java.awt.Font("Sarpanch Black", 1, 24)); // NOI18N
         JLtitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -491,7 +487,7 @@ public class modoNormal extends javax.swing.JFrame {
         JLtitulo2.setText("Modo: Normal");
         jpMain.add(JLtitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 120, 37));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/NUMBLE.jpg"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/imgIntefazJuego.png"))); // NOI18N
         jpMain.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 620));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -611,7 +607,7 @@ public class modoNormal extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    /*public static void main(String args[]) {
+   /* public static void main(String args[]) {
 
         // 1. Aplicamos el diseño moderno (FlatLaf) y nadie lo interrumpe
         FlatLightLaf.setup();
@@ -662,7 +658,6 @@ public class modoNormal extends javax.swing.JFrame {
     private javax.swing.JLabel JLtitulo;
     private javax.swing.JLabel JLtitulo1;
     private javax.swing.JLabel JLtitulo2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
