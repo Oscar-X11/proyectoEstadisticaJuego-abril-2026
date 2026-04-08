@@ -27,9 +27,12 @@ public class gameUI extends javax.swing.JFrame {
         btnFacil = new javax.swing.JButton();
         btnNormal = new javax.swing.JButton();
         btnDificil = new javax.swing.JButton();
-        JLtitulo3 = new javax.swing.JLabel();
         JLtitulo1 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        JLtitulo4 = new javax.swing.JLabel();
+        JLtitulo5 = new javax.swing.JLabel();
+        JLtitulo6 = new javax.swing.JLabel();
+        JLtitulo7 = new javax.swing.JLabel();
+        imgInterfaz = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -40,7 +43,7 @@ public class gameUI extends javax.swing.JFrame {
                 btnFacilActionPerformed(evt);
             }
         });
-        getContentPane().add(btnFacil, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 510, 80, 30));
+        getContentPane().add(btnFacil, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 520, 80, 30));
 
         btnNormal.setText("Jugar");
         btnNormal.addActionListener(new java.awt.event.ActionListener() {
@@ -48,7 +51,7 @@ public class gameUI extends javax.swing.JFrame {
                 btnNormalActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 510, 80, 30));
+        getContentPane().add(btnNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 520, 80, 30));
 
         btnDificil.setText("Jugar");
         btnDificil.addActionListener(new java.awt.event.ActionListener() {
@@ -56,20 +59,35 @@ public class gameUI extends javax.swing.JFrame {
                 btnDificilActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDificil, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 510, 80, 30));
-
-        JLtitulo3.setFont(new java.awt.Font("Sarpanch Black", 0, 18)); // NOI18N
-        JLtitulo3.setForeground(new java.awt.Color(255, 255, 255));
-        JLtitulo3.setText("Selecciona un modo para jugar:");
-        getContentPane().add(JLtitulo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 320, 37));
+        getContentPane().add(btnDificil, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, 80, 30));
 
         JLtitulo1.setFont(new java.awt.Font("Sarpanch Black", 1, 36)); // NOI18N
         JLtitulo1.setForeground(new java.awt.Color(255, 255, 255));
         JLtitulo1.setText("ADIVINA EL NÚMERO");
         getContentPane().add(JLtitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 420, 37));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/UI1.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        JLtitulo4.setFont(new java.awt.Font("Sarpanch Black", 0, 18)); // NOI18N
+        JLtitulo4.setForeground(new java.awt.Color(255, 255, 255));
+        JLtitulo4.setText("Difícil");
+        getContentPane().add(JLtitulo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 60, 37));
+
+        JLtitulo5.setFont(new java.awt.Font("Sarpanch Black", 0, 18)); // NOI18N
+        JLtitulo5.setForeground(new java.awt.Color(255, 255, 255));
+        JLtitulo5.setText("Selecciona un modo para jugar:");
+        getContentPane().add(JLtitulo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 320, 37));
+
+        JLtitulo6.setFont(new java.awt.Font("Sarpanch Black", 0, 18)); // NOI18N
+        JLtitulo6.setForeground(new java.awt.Color(255, 255, 255));
+        JLtitulo6.setText("Fácil");
+        getContentPane().add(JLtitulo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 60, 37));
+
+        JLtitulo7.setFont(new java.awt.Font("Sarpanch Black", 0, 18)); // NOI18N
+        JLtitulo7.setForeground(new java.awt.Color(255, 255, 255));
+        JLtitulo7.setText("Normal");
+        getContentPane().add(JLtitulo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 80, 37));
+
+        imgInterfaz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/GUImenu.jpg"))); // NOI18N
+        getContentPane().add(imgInterfaz, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -111,10 +129,13 @@ public static void main(String args[]) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLtitulo1;
-    private javax.swing.JLabel JLtitulo3;
+    private javax.swing.JLabel JLtitulo4;
+    private javax.swing.JLabel JLtitulo5;
+    private javax.swing.JLabel JLtitulo6;
+    private javax.swing.JLabel JLtitulo7;
     private javax.swing.JButton btnDificil;
     private javax.swing.JButton btnFacil;
     private javax.swing.JButton btnNormal;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel imgInterfaz;
     // End of variables declaration//GEN-END:variables
 }

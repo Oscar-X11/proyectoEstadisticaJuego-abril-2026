@@ -409,7 +409,7 @@ public class modoNormal extends javax.swing.JFrame {
                 AdivinarNumActionPerformed(evt);
             }
         });
-        jpMain.add(AdivinarNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, -1, 30));
+        jpMain.add(AdivinarNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, -1, 30));
 
         txtIngresarNum.setBackground(new java.awt.Color(255, 255, 255));
         txtIngresarNum.setForeground(new java.awt.Color(51, 51, 51));
@@ -419,7 +419,7 @@ public class modoNormal extends javax.swing.JFrame {
                 txtIngresarNumActionPerformed(evt);
             }
         });
-        jpMain.add(txtIngresarNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 150, 30));
+        jpMain.add(txtIngresarNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 140, 30));
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
