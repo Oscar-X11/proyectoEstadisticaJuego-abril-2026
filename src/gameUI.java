@@ -37,6 +37,8 @@ public class gameUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnFacil.setBackground(new java.awt.Color(51, 51, 51));
+        btnFacil.setForeground(new java.awt.Color(255, 255, 255));
         btnFacil.setText("Jugar");
         btnFacil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -45,6 +47,8 @@ public class gameUI extends javax.swing.JFrame {
         });
         getContentPane().add(btnFacil, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 520, 80, 30));
 
+        btnNormal.setBackground(new java.awt.Color(51, 51, 51));
+        btnNormal.setForeground(new java.awt.Color(255, 255, 255));
         btnNormal.setText("Jugar");
         btnNormal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,6 +57,8 @@ public class gameUI extends javax.swing.JFrame {
         });
         getContentPane().add(btnNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 520, 80, 30));
 
+        btnDificil.setBackground(new java.awt.Color(51, 51, 51));
+        btnDificil.setForeground(new java.awt.Color(255, 255, 255));
         btnDificil.setText("Jugar");
         btnDificil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

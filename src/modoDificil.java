@@ -356,6 +356,8 @@ public class modoDificil extends javax.swing.JFrame {
 
         jpMain.add(GridNumeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 390, 333));
 
+        AdivinarNum.setBackground(new java.awt.Color(51, 51, 51));
+        AdivinarNum.setForeground(new java.awt.Color(255, 255, 255));
         AdivinarNum.setText("Adivinar");
         AdivinarNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
