@@ -1,27 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-//holaaa
-/**
- *
- * @author os225
- */
+
 public class VentanaGanar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VentanaGanar
-     */
     private String modoDeJuego;
-    
     public VentanaGanar(int intentos, String Modo) {
         initComponents();
-            this.setTitle("Ganaste");
+        this.setTitle("Ganaste");
         //Colocar en medio de la pantalla
-            this.setLocationRelativeTo(null);
-            int intento=intentos+1;
-             numIntentos.setText("" + intento );
-          this.modoDeJuego=Modo;
+        this.setLocationRelativeTo(null);
+        int intento = intentos + 1;
+        numIntentos.setText("" + intento);
+        this.modoDeJuego = Modo;
     }
 
     /**
@@ -35,8 +23,8 @@ public class VentanaGanar extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         numIntentos = new javax.swing.JLabel();
-        btnRegresarMenu = new javax.swing.JButton();
-        btnVjugar = new javax.swing.JButton();
+        btnVolverMenu = new javax.swing.JButton();
+        btnJugarOtraVez = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -50,26 +38,26 @@ public class VentanaGanar extends javax.swing.JFrame {
         numIntentos.setFont(new java.awt.Font("Sarpanch Black", 1, 24)); // NOI18N
         numIntentos.setForeground(new java.awt.Color(255, 255, 255));
         numIntentos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(numIntentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 170, 50));
+        jPanel1.add(numIntentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 70, 50));
 
-        btnRegresarMenu.setBackground(new java.awt.Color(51, 51, 51));
-        btnRegresarMenu.setText("Volver al Menu");
-        btnRegresarMenu.addActionListener(new java.awt.event.ActionListener() {
+        btnVolverMenu.setBackground(new java.awt.Color(51, 51, 51));
+        btnVolverMenu.setText("Volver al Menu");
+        btnVolverMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegresarMenuActionPerformed(evt);
+                btnVolverMenuActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegresarMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
+        jPanel1.add(btnVolverMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
-        btnVjugar.setBackground(new java.awt.Color(51, 51, 51));
-        btnVjugar.setForeground(new java.awt.Color(255, 255, 255));
-        btnVjugar.setText("Volver a jugar");
-        btnVjugar.addActionListener(new java.awt.event.ActionListener() {
+        btnJugarOtraVez.setBackground(new java.awt.Color(51, 51, 51));
+        btnJugarOtraVez.setForeground(new java.awt.Color(255, 255, 255));
+        btnJugarOtraVez.setText("Volver a jugar");
+        btnJugarOtraVez.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVjugarActionPerformed(evt);
+                btnJugarOtraVezActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVjugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 110, -1));
+        jPanel1.add(btnJugarOtraVez, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 110, -1));
 
         btnSalir.setBackground(new java.awt.Color(51, 51, 51));
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
@@ -93,45 +81,37 @@ public class VentanaGanar extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void btnVjugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVjugarActionPerformed
-       this.dispose();
-       
-       
+    private void btnJugarOtraVezActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarOtraVezActionPerformed
+        this.dispose();
         switch (modoDeJuego) {
             case "Facil":
-                 modoFacil Ventana1 = new modoFacil();
-                 Ventana1.setVisible(true);
+                modoFacil Ventana1 = new modoFacil();
+                Ventana1.setVisible(true);
                 break;
             case "Normal":
-                 modoNormal Ventana2 = new modoNormal();
-                 Ventana2.setVisible(true);
+                modoNormal Ventana2 = new modoNormal();
+                Ventana2.setVisible(true);
                 break;
             case "Dificil":
-                 modoDificil Ventana3 = new modoDificil();
-                 Ventana3.setVisible(true);
+                modoDificil Ventana3 = new modoDificil();
+                Ventana3.setVisible(true);
                 break;
             default:
                 throw new AssertionError();
         }
-      
-        
-    }//GEN-LAST:event_btnVjugarActionPerformed
+    }//GEN-LAST:event_btnJugarOtraVezActionPerformed
 
-    private void btnRegresarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarMenuActionPerformed
-          this.dispose();
+    private void btnVolverMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverMenuActionPerformed
+        this.dispose();
         gameUI Ventana = new gameUI();
         Ventana.setVisible(true);
-    }//GEN-LAST:event_btnRegresarMenuActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
+    }//GEN-LAST:event_btnVolverMenuActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegresarMenu;
+    private javax.swing.JButton btnJugarOtraVez;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton btnVjugar;
+    private javax.swing.JButton btnVolverMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel numIntentos;
