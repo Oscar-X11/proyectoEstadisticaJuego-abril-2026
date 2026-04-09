@@ -1,12 +1,9 @@
 
-import com.formdev.flatlaf.FlatLightLaf;    //iconos modernos
 import java.awt.Color;                      //manipular colores
 import java.util.ArrayList;                 //arraylisy
 import javax.swing.JLabel;                  //trabajar con jlabels
-import javax.swing.JOptionPane;             
-import java.util.Random;                    //generar digitos randoms
+import javax.swing.JOptionPane;                              //generar digitos randoms
 import java.io.File;                           //  ruta de archivos
-
 import java.util.Collections;
 import javax.sound.sampled.AudioSystem;        // Trabajar con audio
 import javax.sound.sampled.AudioInputStream;   
@@ -24,6 +21,7 @@ import javax.sound.sampled.Clip;
  */
 
 public class modoFacil extends javax.swing.JFrame {
+     private String Modo = "Facil";
     private int FILAS = 6;
     private int COLUMNAS = 4;
     private JLabel[][] cuadricula; 
@@ -535,14 +533,14 @@ public class modoFacil extends javax.swing.JFrame {
         
         if (buenas == Encontrado.length && turno <= FILAS) {
             reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\Victory.wav");
-            VentanaGanar Ventana1 = new VentanaGanar(filaAct);
+            VentanaGanar Ventana1 = new VentanaGanar(filaAct,Modo);
             Ventana1.setVisible(true);
                 this.dispose();
         } else if (buenas != Encontrado.length && turno < FILAS) {
             reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\intento.wav");
         } else {
             reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\GameOver.wav");
-            VentanPerder Ventana2 = new VentanPerder(numeroObjetivo);
+            VentanPerder Ventana2 = new VentanPerder(numeroObjetivo,Modo);
             Ventana2.setVisible(true);
                 this.dispose();
         }

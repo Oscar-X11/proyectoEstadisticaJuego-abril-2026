@@ -12,13 +12,16 @@ public class VentanaGanar extends javax.swing.JFrame {
     /**
      * Creates new form VentanaGanar
      */
-    public VentanaGanar(int intentos) {
+    private String modoDeJuego;
+    
+    public VentanaGanar(int intentos, String Modo) {
         initComponents();
             this.setTitle("Ganaste");
         //Colocar en medio de la pantalla
             this.setLocationRelativeTo(null);
             int intento=intentos+1;
              numIntentos.setText("" + intento );
+          this.modoDeJuego=Modo;
     }
 
     /**
@@ -49,6 +52,7 @@ public class VentanaGanar extends javax.swing.JFrame {
         numIntentos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(numIntentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 170, 50));
 
+        btnRegresarMenu.setBackground(new java.awt.Color(51, 51, 51));
         btnRegresarMenu.setText("Volver al Menu");
         btnRegresarMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,21 +61,25 @@ public class VentanaGanar extends javax.swing.JFrame {
         });
         jPanel1.add(btnRegresarMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
+        btnVjugar.setBackground(new java.awt.Color(51, 51, 51));
+        btnVjugar.setForeground(new java.awt.Color(255, 255, 255));
         btnVjugar.setText("Volver a jugar");
         btnVjugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVjugarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVjugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, -1, -1));
+        jPanel1.add(btnVjugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 110, -1));
 
+        btnSalir.setBackground(new java.awt.Color(51, 51, 51));
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, -1, -1));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 70, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/ganaste.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -87,8 +95,26 @@ public class VentanaGanar extends javax.swing.JFrame {
 
     private void btnVjugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVjugarActionPerformed
        this.dispose();
-        modoNormal Ventana = new modoNormal();
-        Ventana.setVisible(true);
+       
+       
+        switch (modoDeJuego) {
+            case "Facil":
+                 modoFacil Ventana1 = new modoFacil();
+                 Ventana1.setVisible(true);
+                break;
+            case "Normal":
+                 modoNormal Ventana2 = new modoNormal();
+                 Ventana2.setVisible(true);
+                break;
+            case "Dificil":
+                 modoDificil Ventana3 = new modoDificil();
+                 Ventana3.setVisible(true);
+                break;
+            default:
+                throw new AssertionError();
+        }
+      
+        
     }//GEN-LAST:event_btnVjugarActionPerformed
 
     private void btnRegresarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarMenuActionPerformed

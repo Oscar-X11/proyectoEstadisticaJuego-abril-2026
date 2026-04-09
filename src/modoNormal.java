@@ -21,6 +21,7 @@ import javax.sound.sampled.Clip;
  * @author os225
  */
 public class modoNormal extends javax.swing.JFrame {
+    private String Modo = "Normal";
     private int FILAS = 6;
     private int COLUMNAS = 5;
     private JLabel[][] cuadricula; 
@@ -579,17 +580,17 @@ public class modoNormal extends javax.swing.JFrame {
                 buenas++;
             }
         }
-        
+        //-------------------------
         if (buenas == Encontrado.length && turno <= 6) {
             reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\Victory.wav");
-            VentanaGanar Ventana1 = new VentanaGanar(filaAct);
+            VentanaGanar Ventana1 = new VentanaGanar(filaAct,Modo);
             Ventana1.setVisible(true);
                 this.dispose();
         } else if (buenas != Encontrado.length && turno < 6) {
             reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\intento.wav");
         } else {
             reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\GameOver.wav");
-            VentanPerder Ventana2 = new VentanPerder(numeroObjetivo);
+            VentanPerder Ventana2 = new VentanPerder(numeroObjetivo,Modo);
             Ventana2.setVisible(true);
                 this.dispose();
         }

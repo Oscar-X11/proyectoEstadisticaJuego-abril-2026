@@ -120,17 +120,12 @@ public class gameUI extends javax.swing.JFrame {
      * @param args the command line arguments
      */
 public static void main(String args[]) {
-
-        // 1. Aplicamos el diseño moderno (FlatLaf) y nadie lo interrumpe
         FlatLightLaf.setup();
-
-        // 2. Abrimos la ventana de tu juego (una sola vez)
         java.awt.EventQueue.invokeLater(() -> {
 
             new gameUI().setVisible(true);
 
         });
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

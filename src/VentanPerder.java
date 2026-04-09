@@ -12,14 +12,15 @@ public class VentanPerder extends javax.swing.JFrame {
     /**
      * Creates new form UiLost
      */
-    public VentanPerder(String numeroObj) {
+     private String modoDeJuego;
+    public VentanPerder(String numeroObj,String Modo) {
          initComponents();
             this.setTitle("Vuelve a intentarlo");
         //Colocar en medio de la pantalla
             this.setLocationRelativeTo(null);
             
              numeroObjetivo.setText("" + numeroObj );
-        
+        this.modoDeJuego = Modo;
     }
 
     /**
@@ -44,6 +45,8 @@ public class VentanPerder extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton1.setBackground(new java.awt.Color(51, 51, 51));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Volver al Menu");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +61,8 @@ public class VentanPerder extends javax.swing.JFrame {
         numeroObjetivo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(numeroObjetivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 170, 50));
 
+        btnSalir.setBackground(new java.awt.Color(51, 51, 51));
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,13 +71,15 @@ public class VentanPerder extends javax.swing.JFrame {
         });
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 70, -1));
 
+        vIntentar.setBackground(new java.awt.Color(51, 51, 51));
+        vIntentar.setForeground(new java.awt.Color(255, 255, 255));
         vIntentar.setText("Volver a jugar");
         vIntentar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vIntentarActionPerformed(evt);
             }
         });
-        jPanel1.add(vIntentar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, -1, -1));
+        jPanel1.add(vIntentar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 110, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/perdiste.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 300));
@@ -85,8 +92,22 @@ public class VentanPerder extends javax.swing.JFrame {
     private void vIntentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vIntentarActionPerformed
          
         this.dispose();
-        modoNormal Ventana = new modoNormal();
-        Ventana.setVisible(true);
+         switch (modoDeJuego) {
+            case "Facil":
+                 modoFacil Ventana1 = new modoFacil();
+                 Ventana1.setVisible(true);
+                break;
+            case "Normal":
+                 modoNormal Ventana2 = new modoNormal();
+                 Ventana2.setVisible(true);
+                break;
+            case "Dificil":
+                 modoDificil Ventana3 = new modoDificil();
+                 Ventana3.setVisible(true);
+                break;
+            default:
+                throw new AssertionError();
+        }
         
     }//GEN-LAST:event_vIntentarActionPerformed
 

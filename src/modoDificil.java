@@ -1,16 +1,17 @@
 
-import com.formdev.flatlaf.FlatLightLaf;    //iconos modernos
+   //iconos modernos
 import java.awt.Color;                      //manipular colores
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;                 //arraylisy
 import javax.swing.JLabel;                  //trabajar con jlabels
 import javax.swing.JOptionPane;             
 import java.util.Random;                    //generar digitos randoms
 import java.io.File;                           //  ruta de archivos
-
-import java.util.Collections;
 import javax.sound.sampled.AudioSystem;        // Trabajar con audio
 import javax.sound.sampled.AudioInputStream;   
 import javax.sound.sampled.Clip;
+import javax.swing.Timer;
 
 
 /*
@@ -24,6 +25,7 @@ import javax.sound.sampled.Clip;
  */
 
 public class modoDificil extends javax.swing.JFrame {
+    private String Modo = "Dificil";
     private int FILAS = 5;
     private int COLUMNAS = 5;
     private JLabel[][] cuadricula; 
@@ -31,10 +33,6 @@ public class modoDificil extends javax.swing.JFrame {
     private String numeroObjetivo;
     private int intentos = FILAS;
 
-    /**
-     * Creates new form NumbleUI
-     */
-    
     public static ArrayList<Integer> DividirDigitos(String palabra) {
         ArrayList<Integer> numerosDivididos = new ArrayList<>();
         for (int i = 0; i < palabra.length(); i++) {
@@ -43,26 +41,61 @@ public class modoDificil extends javax.swing.JFrame {
         }
         return numerosDivididos;
     }
-     
-    
-    
+ 
     public void reproducirSonido(String rutaArchivo) {
         try {
             File archivoFisico = new File(rutaArchivo);
             if (archivoFisico.exists()) {
                 AudioInputStream audioInput = AudioSystem.getAudioInputStream(archivoFisico);
-                Clip clip = AudioSystem.getClip();
-                clip.open(audioInput);
+                Clip clip = AudioSystem.getClip();//
+                clip.open(audioInput);//abre el archivo
                 clip.start(); //  reproduce sonido
             } else {
-                System.out.println("No se encontró: " + rutaArchivo);
+                System.out.println("No se encontró el archivo: " + rutaArchivo);
             }
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Error: " + e);
         }
     }
     
-    
+    private Timer temporizador;
+    private int tiempoRestante = 60;
+    private void iniciarCronometro() {
+        //tiempoRestante = 60; // Empezamos con 60 segundos
+        jLabelDato2.setText("01:00"); 
+
+       //se reinicia el temporizador
+        if (temporizador != null) {
+            temporizador.stop();
+        }
+
+        
+        temporizador = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                
+                tiempoRestante--; // Restar un segundo
+                
+               
+                String segundos = String.format("%02d", tiempoRestante);
+                jLabelDato2.setText("00:" + segundos);
+
+                // Verificar si perdimos por tiempo
+                if (tiempoRestante <= 0) {
+                    temporizador.stop(); // 
+                    
+                    //termina el juego
+                    
+                }
+                /* ------------------ */
+                
+            }
+        });
+        
+        // Arrancamos el reloj
+        temporizador.start(); 
+    }
     
     public modoDificil() {
         initComponents();
@@ -467,7 +500,7 @@ public class modoDificil extends javax.swing.JFrame {
 
     private void AdivinarNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdivinarNumActionPerformed
         intentos--;
-        
+        iniciarCronometro();
    
         
         Color colAcertado = Color.decode("#a1d06c");
@@ -539,17 +572,20 @@ public class modoDificil extends javax.swing.JFrame {
         }
         
         if (buenas == Encontrado.length && turno <= FILAS) {
+            
+            temporizador.stop();
             reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\Victory.wav");
-            VentanaGanar Ventana1 = new VentanaGanar(filaAct);
+            VentanaGanar Ventana1 = new VentanaGanar(filaAct,Modo);
             Ventana1.setVisible(true);
                 this.dispose();
         } else if (buenas != Encontrado.length && turno < FILAS) {
             reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\intento.wav");
         } else {
             reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\GameOver.wav");
-            VentanPerder Ventana2 = new VentanPerder(numeroObjetivo);
+            VentanPerder Ventana2 = new VentanPerder(numeroObjetivo,Modo);
             Ventana2.setVisible(true);
-                this.dispose();
+            
+   
         }
 
         txtIngresarNum.setText("");
@@ -562,24 +598,7 @@ public class modoDificil extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIngresarNumActionPerformed
 
     
-    // El resto de tu código main para iniciar el juego...
-    
-    /**
-     * @param args the command line arguments
-     */
-   /* public static void main(String args[]) {
-
-        // 1. Aplicamos el diseño moderno (FlatLaf) y nadie lo interrumpe
-        FlatLightLaf.setup();
-
-        // 2. Abrimos la ventana de tu juego (una sola vez)
-        java.awt.EventQueue.invokeLater(() -> {
-
-            new modoDificil().setVisible(true);
-
-        });
-
-    }*/
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AdivinarNum;
