@@ -41,6 +41,7 @@ public class VentanaGanar extends javax.swing.JFrame {
         jPanel1.add(numIntentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 70, 50));
 
         btnVolverMenu.setBackground(new java.awt.Color(51, 51, 51));
+        btnVolverMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnVolverMenu.setText("Volver al Menu");
         btnVolverMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

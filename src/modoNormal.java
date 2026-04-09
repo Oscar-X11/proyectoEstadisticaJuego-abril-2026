@@ -67,6 +67,7 @@ public class modoNormal extends javax.swing.JFrame {
 
         };
         jLabelDato1.setText("" + intentos);
+        jLabelDato2.setText("Modo: " + Modo);
     }
 
     @SuppressWarnings("unchecked")
@@ -115,7 +116,7 @@ public class modoNormal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         JLtitulo1 = new javax.swing.JLabel();
-        JLtitulo2 = new javax.swing.JLabel();
+        RregresarAlMenu = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         JLtitulo.setFont(new java.awt.Font("Sarpanch Black", 1, 24)); // NOI18N
@@ -459,10 +460,15 @@ public class modoNormal extends javax.swing.JFrame {
         JLtitulo1.setText("ADIVINA EL NUMERO");
         jpMain.add(JLtitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 280, 37));
 
-        JLtitulo2.setFont(new java.awt.Font("Sarpanch Black", 1, 14)); // NOI18N
-        JLtitulo2.setForeground(new java.awt.Color(255, 255, 255));
-        JLtitulo2.setText("Modo: Normal");
-        jpMain.add(JLtitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 120, 37));
+        RregresarAlMenu.setBackground(new java.awt.Color(51, 51, 51));
+        RregresarAlMenu.setForeground(new java.awt.Color(255, 255, 255));
+        RregresarAlMenu.setText("Volver");
+        RregresarAlMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RregresarAlMenuActionPerformed(evt);
+            }
+        });
+        jpMain.add(RregresarAlMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 70, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/imgIntefazJuego.png"))); // NOI18N
         jpMain.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 620));
@@ -573,6 +579,15 @@ public class modoNormal extends javax.swing.JFrame {
         AdivinarNum.doClick();
     }//GEN-LAST:event_txtIngresarNumActionPerformed
 
+    private void RregresarAlMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RregresarAlMenuActionPerformed
+        int respuesta = JOptionPane.showConfirmDialog(null, "¿Estás seguro de continuar?", "Confirmación", JOptionPane.YES_NO_OPTION);
+        if (respuesta == JOptionPane.YES_OPTION) {
+           gameUI Ventana = new gameUI();
+        Ventana.setVisible(true);
+        this.dispose();
+        }
+    }//GEN-LAST:event_RregresarAlMenuActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AdivinarNum;
@@ -610,7 +625,7 @@ public class modoNormal extends javax.swing.JFrame {
     private javax.swing.JLabel JL9;
     private javax.swing.JLabel JLtitulo;
     private javax.swing.JLabel JLtitulo1;
-    private javax.swing.JLabel JLtitulo2;
+    private javax.swing.JButton RregresarAlMenu;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
