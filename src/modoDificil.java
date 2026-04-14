@@ -65,9 +65,13 @@ public class modoDificil extends javax.swing.JFrame {
                 tiempoRestante--; // Restar un segundo
                 String segundos = String.format("%02d", tiempoRestante);
                 jLabelDato2.setText("00:" + segundos);
-                // Verificar si perdimos por tiempo
+                // Verificar si perdimos por el tiempo
                 if (tiempoRestante <= 0) {
                     temporizador.stop(); // 
+                    reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\GameOver.wav");
+                    VentanPerder Ventana2 = new VentanPerder(numeroObjetivo, Modo);
+                    Ventana2.setVisible(true);
+                    dispose();
                 }
             }
         });
@@ -408,7 +412,7 @@ public class modoDificil extends javax.swing.JFrame {
                 .addGroup(GridDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jLabelDato1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(GridDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GridDatosLayout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -428,7 +432,7 @@ public class modoDificil extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelDato1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jpMain.add(GridDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 410, 80));
