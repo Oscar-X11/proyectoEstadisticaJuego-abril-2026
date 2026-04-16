@@ -472,6 +472,15 @@ public class modoDificil extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AdivinarNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdivinarNumActionPerformed
+                String intento = txtIngresarNum.getText();
+        //Validar que sean exactamente 5 números
+        if (intento.length() != COLUMNAS || !intento.matches("\\d+")) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingresa exactamente " + COLUMNAS + " números.");
+            return; // Detiene la ejecución si no es válido
+        }
+        
+        intentos--;
+        jLabelDato1.setText("" + intentos);
         
         Color colAcertado = Color.decode("#a1d06c");
         Color colIncorrecto = Color.decode("#f4cd79");
@@ -479,14 +488,9 @@ public class modoDificil extends javax.swing.JFrame {
 
         int turno = filaAct + 1;
         //se recibe los datos ingresados
-        jLabelDato1.setText("" + intentos);
-        String intento = txtIngresarNum.getText();
-        //Validar que sean exactamente 5 números
-        if (intento.length() != COLUMNAS || !intento.matches("\\d+")) {
-            JOptionPane.showMessageDialog(null, "Por favor, ingresa exactamente " + COLUMNAS + " números.");
-            return; // Detiene la ejecución si no es válido
-        }
-        intentos--;
+      
+
+        
         iniciarCronometro();
         
         ArrayList<Integer> digitos = DividirDigitos(intento);

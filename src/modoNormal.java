@@ -3,7 +3,6 @@ import java.awt.Color;                      //manipular colores
 import java.util.ArrayList;                 //arraylisy
 import javax.swing.JLabel;                  //trabajar con jlabels
 import javax.swing.JOptionPane;             //generar digitos randoms
-import java.io.File;                        //  ruta de archivos
 import java.util.Random;
 import javax.sound.sampled.AudioSystem;     // Trabajar con audio
 import javax.sound.sampled.AudioInputStream;//-
@@ -27,7 +26,7 @@ public class modoNormal extends javax.swing.JFrame {
         }
         return numerosDivididos;
     }
-
+    /*
     public void reproducirSonido(String rutaArchivo) {
         try {
             File archivoFisico = new File(rutaArchivo);
@@ -41,6 +40,23 @@ public class modoNormal extends javax.swing.JFrame {
             }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
+        }
+    }*/
+    public void reproducirSonido(String nombreArchivo) {
+        try {
+            // Buscamos el archivo dentro del paquete de recursos
+            java.net.URL url = getClass().getResource("/sonidos/" + nombreArchivo);
+
+            if (url != null) {
+                AudioInputStream audioInput = AudioSystem.getAudioInputStream(url);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInput);
+                clip.start();
+            } else {
+                System.out.println("No se encontró el recurso: " + nombreArchivo);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al reproducir audio: " + e.getMessage());
         }
     }
 
@@ -57,6 +73,7 @@ public class modoNormal extends javax.swing.JFrame {
             sb.append(random.nextInt(10));
         }
         numeroObjetivo = sb.toString();
+        
         cuadricula = new JLabel[][]{
             {JL1, JL2, JL3, JL4, JL5},
             {JL6, JL7, JL8, JL9, JL10},
@@ -490,21 +507,25 @@ public class modoNormal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AdivinarNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdivinarNumActionPerformed
-
-        Color colAcertado = Color.decode("#a1d06c");
-        Color colIncorrecto = Color.decode("#f4cd79");
-        Color colNoExiste = Color.decode("#44475A");
-
-        int turno = filaAct + 1;
-         //se recibe los datos ingresados
-        jLabelDato1.setText("" + intentos);
         String intento = txtIngresarNum.getText();
         //Validar que sean exactamente 5 números
         if (intento.length() != COLUMNAS || !intento.matches("\\d+")) {
             JOptionPane.showMessageDialog(null, "Por favor, ingresa exactamente " + COLUMNAS + " números.");
             return; // Detiene la ejecución si no es válido
         }
+        
         intentos--;
+        jLabelDato1.setText("" + intentos);
+        
+        Color colAcertado = Color.decode("#a1d06c");
+        Color colIncorrecto = Color.decode("#f4cd79");
+        Color colNoExiste = Color.decode("#44475A");
+
+        int turno = filaAct + 1;
+         //se recibe los datos ingresados
+       
+        
+        
 
         //pistas
         int inten = Integer.parseInt(intento);
@@ -523,14 +544,17 @@ public class modoNormal extends javax.swing.JFrame {
         boolean[] Encontrado = new boolean[COLUMNAS];
 
         for (int i = 0; i < COLUMNAS; i++) {
-            int digIngresado = digitos.get(i); //obtiene el dato del arrayde datos divididos(NumObjetivo)
-            int digAdivinar1 = NumObjetivo.get(i);
+            int digIngresado = digitos.get(i); //obtiene el dato ingresado
+            int digAdivinar1 = NumObjetivo.get(i);//objetivo
             cuadricula[filaAct][i].setText(String.valueOf(digIngresado));
-
+            
+            
+            //se compara si los digitos en esa posicion son iguales
             if (digIngresado == digAdivinar1) {
                 cuadricula[filaAct][i].setBackground(colAcertado);
                 Encontrado[i] = true;// maraca si fue encontrado
-                NumObjetivo.set(i, -1);//si fue encontrado se cambia de valor para no volver a contabilizar el digito
+                NumObjetivo.set(i, -1);
+                //si fue encontrado se cambia de valor para no volver a contar       el digito
             }
         }
 
@@ -538,17 +562,18 @@ public class modoNormal extends javax.swing.JFrame {
             // Solo revisamos si NO fue encontrado
             if (Encontrado[i] == false) {
                 int digIngresado = digitos.get(i);
-                //analizamos el digito para ver si esta y coincide con el dato ingresado
+            //analizamos el digito y analizamos si esta contenido en el numObjetivo
                 if (NumObjetivo.contains(digIngresado)) {
                     cuadricula[filaAct][i].setBackground(colIncorrecto);
                     int indexAmarillo = NumObjetivo.indexOf(digIngresado);
-                    NumObjetivo.set(indexAmarillo, -1);///marcar para evitar duplicados al colorear
+                    NumObjetivo.set(indexAmarillo, -1);///marcar             para evitar duplicados al colorear
                 } else {// si no se encontro el digito se pinta de gris
                     cuadricula[filaAct][i].setBackground(colNoExiste);
                 }
             }
         }
-        //contador para validar si todas las opciones son correctas
+        //contador para validar 
+        //si todas las opciones son correctas
         int buenas = 0;
         for (boolean bol : Encontrado) {
             if (bol == true) {
@@ -557,18 +582,25 @@ public class modoNormal extends javax.swing.JFrame {
         }
         //validadcion para ganar
         if (buenas == Encontrado.length && turno <= 6) {
-            reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\Victory.wav");
+         //   reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\Victory.wav");
+            reproducirSonido("Victory.wav");
+
             VentanaGanar Ventana1 = new VentanaGanar(filaAct, Modo);
             Ventana1.setVisible(true);
             this.dispose();
         } else if (buenas != Encontrado.length && turno < 6) {
-            reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\intento.wav");
+           // reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\intento.wav");
+            reproducirSonido("intento.wav");
         } else {
-            reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\GameOver.wav");
+           // reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\GameOver.wav");
+            reproducirSonido("GameOver.wav");
             VentanPerder Ventana2 = new VentanPerder(numeroObjetivo, Modo);
             Ventana2.setVisible(true);
             this.dispose();
         }
+        // En lugar de la ruta larga, usa solo el nombre:
+
+
 
         txtIngresarNum.setText("");
         filaAct++;

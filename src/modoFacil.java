@@ -434,23 +434,30 @@ public class modoFacil extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AdivinarNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdivinarNumActionPerformed
-
+           //se ingresa el numero
+        String datosIngresados = txtIngresarNum.getText();
+        //Validar que sean exactamente 5 números
+        if (datosIngresados.length() != COLUMNAS || !datosIngresados.matches("\\d+")) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingresa exactamente " + COLUMNAS + " números.");
+            return; // Detiene la ejecución si no es válido
+        }
+        int turno = filaAct + 1;
+        intentos--;
+        jLabelDato1.setText("" + intentos);
+          
+          
+          
         Color colAcertado = Color.decode("#a1d06c");
         Color colIncorrecto = Color.decode("#f4cd79");
         Color colNoExiste = Color.decode("#44475A");
         
-        int turno = filaAct + 1;
+        
         //se recibe los datos ingresados
-        jLabelDato1.setText("" + intentos);
-        String datosIngresado = txtIngresarNum.getText();
-        //Validar que sean exactamente 5 números
-        if (datosIngresado.length() != COLUMNAS || !datosIngresado.matches("\\d+")) {
-            JOptionPane.showMessageDialog(null, "Por favor, ingresa exactamente " + COLUMNAS + " números.");
-            return; // Detiene la ejecución si no es válido
-        }
-        intentos--;
+       
+       
+       
         //pistas
-        int inten = Integer.parseInt(datosIngresado);
+        int inten = Integer.parseInt(datosIngresados);
         int objetive = Integer.parseInt(numeroObjetivo);
         //--pista
         if (objetive > inten) {
@@ -460,7 +467,7 @@ public class modoFacil extends javax.swing.JFrame {
             jLabelDato2.setText("El numero es menor");
         }
         
-        ArrayList<Integer> digitos = DividirDigitos(datosIngresado);
+        ArrayList<Integer> digitos = DividirDigitos(datosIngresados);
         ArrayList<Integer> NumObjetivo = DividirDigitos(numeroObjetivo);
 
         //array para marcar los encontrados
