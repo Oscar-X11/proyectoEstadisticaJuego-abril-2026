@@ -3,10 +3,7 @@ import java.awt.Color;                      //manipular colores
 import java.util.ArrayList;                 //arraylisy
 import javax.swing.JLabel;                  //trabajar con jlabels
 import javax.swing.JOptionPane;             //generar digitos randoms
-import java.util.Random;
-import javax.sound.sampled.AudioSystem;     // Trabajar con audio
-import javax.sound.sampled.AudioInputStream;//-
-import javax.sound.sampled.Clip;            //-
+import java.util.Random;          //-
 
 public class modoNormal extends javax.swing.JFrame {
 
@@ -551,7 +548,7 @@ public class modoNormal extends javax.swing.JFrame {
         //validadcion para ganar
         // Lógica simplificada
                 //validadcion para ganar
-        if (buenas == Encontrado.length) {//ganó
+        if (buenas == 5) {//ganó
             VentanaGanar Ventana1 = new VentanaGanar(filaAct, Modo);
             Ventana1.setVisible(true);
             this.dispose();

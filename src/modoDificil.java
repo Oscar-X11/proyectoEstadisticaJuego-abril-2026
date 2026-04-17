@@ -6,10 +6,6 @@ import java.util.ArrayList;                 //arraylisy
 import javax.swing.JLabel;                  //trabajar con jlabels
 import javax.swing.JOptionPane;
 import java.util.Random;                    //generar digitos randoms
-import java.io.File;                           //  ruta de archivos
-import javax.sound.sampled.AudioSystem;        // Trabajar con audio
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.Clip;
 import javax.swing.Timer;
 
 public class modoDificil extends javax.swing.JFrame {
@@ -472,7 +468,7 @@ public class modoDificil extends javax.swing.JFrame {
         int turno = filaAct + 1;
 
         iniciarCronometro();
-        
+         
         ArrayList<Integer> digitos = DividirDigitos(intento);
         ArrayList<Integer> NumObjetivo = DividirDigitos(numeroObjetivo);
 
@@ -515,13 +511,15 @@ public class modoDificil extends javax.swing.JFrame {
         
         //validadcion para ganar
                //validadcion para ganar
-        if (buenas == Encontrado.length) {//ganó
+        if (buenas == 5) {//ganó
+            temporizador.stop(); 
             VentanaGanar Ventana1 = new VentanaGanar(filaAct, Modo);
             Ventana1.setVisible(true);
             this.dispose();
             return; 
         }
-        if (turno >= 6) {//perdio
+        if (turno >= 5) {//perdio
+            temporizador.stop(); 
             VentanPerder Ventana2 = new VentanPerder(numeroObjetivo, Modo);
             Ventana2.setVisible(true);
             this.dispose();

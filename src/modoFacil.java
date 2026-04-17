@@ -494,7 +494,7 @@ public class modoFacil extends javax.swing.JFrame {
         }
         
         //validadcion para ganar
-        if (buenas == Encontrado.length) {//ganó
+        if (buenas == 4) {//ganó //4
             VentanaGanar Ventana1 = new VentanaGanar(filaAct, Modo);
             Ventana1.setVisible(true);
             this.dispose();
