@@ -26,39 +26,7 @@ public class modoNormal extends javax.swing.JFrame {
         }
         return numerosDivididos;
     }
-    /*
-    public void reproducirSonido(String rutaArchivo) {
-        try {
-            File archivoFisico = new File(rutaArchivo);
-            if (archivoFisico.exists()) {
-                AudioInputStream audioInput = AudioSystem.getAudioInputStream(archivoFisico);
-                Clip clip = AudioSystem.getClip();
-                clip.open(audioInput);
-                clip.start(); //  reproduce sonido
-            } else {
-                System.out.println("No se encontró: " + rutaArchivo);
-            }
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }*/
-    public void reproducirSonido(String nombreArchivo) {
-        try {
-            // Buscamos el archivo dentro del paquete de recursos
-            java.net.URL url = getClass().getResource("/sonidos/" + nombreArchivo);
-
-            if (url != null) {
-                AudioInputStream audioInput = AudioSystem.getAudioInputStream(url);
-                Clip clip = AudioSystem.getClip();
-                clip.open(audioInput);
-                clip.start();
-            } else {
-                System.out.println("No se encontró el recurso: " + nombreArchivo);
-            }
-        } catch (Exception e) {
-            System.out.println("Error al reproducir audio: " + e.getMessage());
-        }
-    }
+    
 
     public modoNormal() {
         initComponents();
@@ -581,24 +549,20 @@ public class modoNormal extends javax.swing.JFrame {
             }
         }
         //validadcion para ganar
-        if (buenas == Encontrado.length && turno <= 6) {
-         //   reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\Victory.wav");
-            reproducirSonido("Victory.wav");
-
+        // Lógica simplificada
+                //validadcion para ganar
+        if (buenas == Encontrado.length) {//ganó
             VentanaGanar Ventana1 = new VentanaGanar(filaAct, Modo);
             Ventana1.setVisible(true);
             this.dispose();
-        } else if (buenas != Encontrado.length && turno < 6) {
-           // reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\intento.wav");
-            reproducirSonido("intento.wav");
-        } else {
-           // reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\GameOver.wav");
-            reproducirSonido("GameOver.wav");
+            return; // El return evita que se ejecute lo de abajo
+        }
+        if (turno >= 6) {//perdio
             VentanPerder Ventana2 = new VentanPerder(numeroObjetivo, Modo);
             Ventana2.setVisible(true);
             this.dispose();
         }
-        // En lugar de la ruta larga, usa solo el nombre:
+
 
 
 

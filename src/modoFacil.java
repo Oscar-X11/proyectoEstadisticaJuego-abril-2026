@@ -28,21 +28,7 @@ public class modoFacil extends javax.swing.JFrame {
         return numerosDivididos;
     }
 
-    public void reproducirSonido(String rutaArchivo) {
-        try {
-            File archivoFisico = new File(rutaArchivo);
-            if (archivoFisico.exists()) {
-                AudioInputStream audioInput = AudioSystem.getAudioInputStream(archivoFisico);
-                Clip clip = AudioSystem.getClip();
-                clip.open(audioInput);
-                clip.start(); //  reproduce sonido
-            } else {
-                System.out.println("No se encontró: " + rutaArchivo);
-            }
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }
+    
 
     public modoFacil() {
         initComponents();
@@ -508,15 +494,13 @@ public class modoFacil extends javax.swing.JFrame {
         }
         
         //validadcion para ganar
-        if (buenas == Encontrado.length && turno <= FILAS) {
-            reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\Victory.wav");
+        if (buenas == Encontrado.length) {//ganó
             VentanaGanar Ventana1 = new VentanaGanar(filaAct, Modo);
             Ventana1.setVisible(true);
             this.dispose();
-        } else if (buenas != Encontrado.length && turno < FILAS) {
-            reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\intento.wav");
-        } else {
-            reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\GameOver.wav");
+            return; // El return evita que se ejecute lo de abajo
+        }
+        if (turno >= 6) {//perdio
             VentanPerder Ventana2 = new VentanPerder(numeroObjetivo, Modo);
             Ventana2.setVisible(true);
             this.dispose();

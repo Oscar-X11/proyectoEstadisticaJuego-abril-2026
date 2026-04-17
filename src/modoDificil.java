@@ -31,27 +31,11 @@ public class modoDificil extends javax.swing.JFrame {
         return numerosDivididos;
     }
 
-    public void reproducirSonido(String rutaArchivo) {
-        try {
-            File archivoFisico = new File(rutaArchivo);
-            if (archivoFisico.exists()) {
-                AudioInputStream audioInput = AudioSystem.getAudioInputStream(archivoFisico);
-                Clip clip = AudioSystem.getClip();//
-                clip.open(audioInput);//abre el archivo
-                clip.start(); //  reproduce sonido
-            } else {
-                System.out.println("No se encontró el archivo: " + rutaArchivo);
-            }
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
-        }
-    }
+ 
 
     private Timer temporizador;
-    private int tiempoRestante = 60;
-
+    private int tiempoRestante = 60;        //Empezamos con 60 segundos
     private void iniciarCronometro() {
-        //tiempoRestante = 60; // Empezamos con 60 segundos
         jLabelDato2.setText("01:00");
 
         //se reinicia el temporizador
@@ -64,11 +48,10 @@ public class modoDificil extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 tiempoRestante--; // Restar un segundo
                 String segundos = String.format("%02d", tiempoRestante);
-                jLabelDato2.setText("00:" + segundos);
+                jLabelDato2.setText("00:" + segundos);//se imprime con un formatode segundos
                 // Verificar si perdimos por el tiempo
                 if (tiempoRestante <= 0) {
                     temporizador.stop(); // 
-                    reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\GameOver.wav");
                     VentanPerder Ventana2 = new VentanPerder(numeroObjetivo, Modo);
                     Ventana2.setVisible(true);
                     dispose();
@@ -487,10 +470,7 @@ public class modoDificil extends javax.swing.JFrame {
         Color colNoExiste = Color.decode("#44475A");
 
         int turno = filaAct + 1;
-        //se recibe los datos ingresados
-      
 
-        
         iniciarCronometro();
         
         ArrayList<Integer> digitos = DividirDigitos(intento);
@@ -534,22 +514,17 @@ public class modoDificil extends javax.swing.JFrame {
         }
         
         //validadcion para ganar
-        if (buenas == Encontrado.length && turno <= FILAS) {
-            //int tiempoFinal = tiempoRestante;
-            temporizador.stop();
-            reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\Victory.wav");
+               //validadcion para ganar
+        if (buenas == Encontrado.length) {//ganó
             VentanaGanar Ventana1 = new VentanaGanar(filaAct, Modo);
             Ventana1.setVisible(true);
             this.dispose();
-        } else if (buenas != Encontrado.length && turno < FILAS) {
-            reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\intento.wav");
-        } else {
-            temporizador.stop();
-            reproducirSonido("C:\\Users\\os225\\NetBeansProjects\\ProyectoNumble\\src\\sonidos\\GameOver.wav");
+            return; 
+        }
+        if (turno >= 6) {//perdio
             VentanPerder Ventana2 = new VentanPerder(numeroObjetivo, Modo);
             Ventana2.setVisible(true);
             this.dispose();
-
         }
 
         txtIngresarNum.setText("");
